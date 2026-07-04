@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  kavenegar-sms:
+    image: kavenegar-sms:latest
+    container_name: kavenegar-sms
+    ports:
+      - "8082:8082"
+    env_file:
+      - .env    
+    environment:
+      - KAVENEGAR_API_KEY=${KAVENEGAR_API_KEY}
+      - KAVENEGAR_SENDER=${KAVENEGAR_SENDER}
+      - KAVENEGAR_RECEIVERS=${KAVENEGAR_RECEIVERS}
+    restart: unless-stopped
